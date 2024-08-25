@@ -29,7 +29,7 @@ def change_bgm():
 change_bgm()
 
 # Initialize the Cohere API key
-os.environ["COHERE_API_KEY"] = "hEfcl4uOqse4sCyqEnmQ1Q5OnI9UzdO8e9rSHYL3"
+os.environ["COHERE_API_KEY"] = "XyBudfarv1bxPBBJRDK6BpX00NujnPz3RTRFXioy"
 
 st.title("Doclingual - Multilingual Document Understanding")
 
