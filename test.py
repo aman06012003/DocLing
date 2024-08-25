@@ -95,3 +95,19 @@ if uploaded_file:
 
 else:
     st.info("Please upload a PDF or CSV file to proceed.")
+
+
+
+background_image_url = "https://img.freepik.com/premium-photo/green-background-with-bokeh-rays_582451-37.jpg"
+
+st.markdown(
+    f"""
+    <style>
+    body {{
+        background-image: url("{background_image_url}");
+        background-size: cover;
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
