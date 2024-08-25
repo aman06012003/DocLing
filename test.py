@@ -16,7 +16,7 @@ from io import StringIO
 # Initialize the Cohere API key
 os.environ["COHERE_API_KEY"] = "hEfcl4uOqse4sCyqEnmQ1Q5OnI9UzdO8e9rSHYL3"
 
-st.title("Document-based Question Answering")
+st.title("Doclingual - Multilingual Document Understanding")
 
 # Upload file
 uploaded_file = st.file_uploader("Upload a PDF or CSV file", type=["pdf", "csv"])
