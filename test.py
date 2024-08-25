@@ -78,8 +78,12 @@ if uploaded_file:
     # Embed the documents
     document_embedder = CohereDocumentEmbedder(model="embed-multilingual-v2.0")
     documents_with_embeddings = document_embedder.run(documents)["documents"]
-    document_store.write_documents(documents_with_embeddings, policy=DuplicatePolicy.SKIP)
 
+    for doc in documents_with_embeddings:
+        st.write(f"Embedded Document: {doc.content[:500]} with Embedding Shape: {doc.embedding.shape}")
+
+    
+    document_store.write_documents(documents_with_embeddings, policy=DuplicatePolicy.SKIP)
     # Define the pipeline components
     template = """
         You are a highly accurate and reliable information retriever. Your task is to carefully analyze the provided context and answer the question with the highest level of accuracy.
