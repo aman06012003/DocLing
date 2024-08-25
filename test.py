@@ -93,7 +93,7 @@ Question: {{ query }}?
 
 Instructions:
 Your answer must be based strictly on the information provided in the context.
-Focus on clarity and precision.
+Focus on clarity, precision and maximum accurate answer
 If the context provides conflicting information, prioritize the most reliable or recent data.
 If the context does not contain enough information to answer the question, state that explicitly.
 
