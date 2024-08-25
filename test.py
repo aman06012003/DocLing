@@ -18,7 +18,7 @@ def change_bgm():
         f"""
         <style>
         .stApp {{
-            background-image: url("https://img.freepik.com/premium-photo/green-background-with-bokeh-rays_582451-37.jpg");
+            background-image: url("https://t4.ftcdn.net/jpg/01/17/22/31/360_F_117223193_GVPlYQZIF3BSwsUOHakbIsOM9Z5FJfFQ.jpg");
             background-size: cover;
         }}
         </style>
