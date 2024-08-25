@@ -82,14 +82,22 @@ if uploaded_file:
 
     # Define the pipeline components
     template = """
-        Given the following information, answer the question with MAXIMUM ACCURACY.
+        You are a highly accurate and reliable information retriever. Your task is to carefully analyze the provided context and answer the question with the highest level of accuracy.
 
-        Context:
-        {% for document in documents %}
-            {{ document.content }}
-        {% endfor %}
+Context:
+{% for document in documents %}
+   {{ document.content }}
+{% endfor %}
 
-        Question: {{ query }}?
+Question: {{ query }}?
+
+Instructions:
+Your answer must be based strictly on the information provided in the context.
+Focus on clarity and precision.
+If the context provides conflicting information, prioritize the most reliable or recent data.
+If the context does not contain enough information to answer the question, state that explicitly.
+
+Provide a concise and accurate response to the question.
          
         """
 
