@@ -18,23 +18,6 @@ os.environ["COHERE_API_KEY"] = "hEfcl4uOqse4sCyqEnmQ1Q5OnI9UzdO8e9rSHYL3"
 
 st.title("Doclingual - Multilingual Document Understanding")
 
-PAGE_CONFIG = {"page_title": "Geriatric AI",
-               "page_icon": "icon.png", "layout": "centered"}
-st.set_page_config(**PAGE_CONFIG)
-page_bg_img = f"""
-    <style>
-    [data-testid="stAppViewContainer"] > .main {{
-    background-image: url("https://img.freepik.com/premium-photo/green-background-with-bokeh-rays_582451-37.jpg");
-    background-size: cover;
-    background-position: top left;
-    background-repeat: no-repeat;
-    }}
-    [data-testid="stHeader"] {{
-    color: black;
-    }}
-    </style>
-    """
-
 # Upload file
 uploaded_file = st.file_uploader("Upload a PDF or CSV file", type=["pdf", "csv"])
 
