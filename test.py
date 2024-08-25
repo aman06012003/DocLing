@@ -20,9 +20,8 @@ st.title("Doclingual - Multilingual Document Understanding")
 
 PAGE_CONFIG = {"page_title": "Geriatric AI",
                "page_icon": "icon.png", "layout": "centered"}
-    st.set_page_config(**PAGE_CONFIG)
-    
-    page_bg_img = f"""
+st.set_page_config(**PAGE_CONFIG)
+page_bg_img = f"""
     <style>
     [data-testid="stAppViewContainer"] > .main {{
     background-image: url("https://img.freepik.com/premium-photo/green-background-with-bokeh-rays_582451-37.jpg");
