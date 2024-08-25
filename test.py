@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import pdfplumber
-from haystack import Document
+from haystack.schema import Document
 from haystack import Pipeline
 from haystack.document_stores.in_memory import InMemoryDocumentStore
 from haystack.document_stores.types import DuplicatePolicy
