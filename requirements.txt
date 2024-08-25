@@ -20,8 +20,6 @@ pandas==2.2.2
 parameterized==0.9.0
 pdfminer.six==20231228
 pdfplumber==0.11.4
-pydantic==1.10.18
-pydantic_core==2.23.0
 pytz==2024.1
 ragas==0.1.14
 ragas-haystack==1.0.0
