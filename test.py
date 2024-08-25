@@ -13,6 +13,21 @@ from haystack_integrations.components.generators.cohere import CohereGenerator
 import os
 from io import StringIO
 
+def change_bgm():
+    st.markdown(
+        f"""
+        <style>
+        .stApp {{
+            background-image: url("https://img.freepik.com/premium-photo/green-background-with-bokeh-rays_582451-37.jpg");
+            background-size: cover;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+change_bgm()
+
 # Initialize the Cohere API key
 os.environ["COHERE_API_KEY"] = "hEfcl4uOqse4sCyqEnmQ1Q5OnI9UzdO8e9rSHYL3"
 
@@ -96,18 +111,3 @@ if uploaded_file:
 else:
     st.info("Please upload a PDF or CSV file to proceed.")
 
-
-
-background_image_url = "https://img.freepik.com/premium-photo/green-background-with-bokeh-rays_582451-37.jpg"
-
-st.markdown(
-    f"""
-    <style>
-    body {{
-        background-image: url("{background_image_url}");
-        background-size: cover;
-    }}
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
