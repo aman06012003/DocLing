@@ -1,7 +1,6 @@
 cohere
 cohere-haystack
 datasets
-farm-haystack==1.26.2
 haystack==0.42
 haystack-ai==2.4.0
 haystack-experimental==0.1.1
