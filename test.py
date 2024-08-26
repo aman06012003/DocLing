@@ -79,8 +79,8 @@ if uploaded_file:
     document_embedder = CohereDocumentEmbedder(model="embed-multilingual-v2.0")
     documents_with_embeddings = document_embedder.run(documents)["documents"]
 
-    for doc in documents_with_embeddings:
-        st.write(f"Embedded Document: {doc.content[:500]} with Embedding Shape: {doc.embedding.shape}")
+    # for doc in documents_with_embeddings:
+    #     st.write(f"Embedded Document: {doc.content[:500]} with Embedding Shape: {doc.embedding.shape}")
 
     
     document_store.write_documents(documents_with_embeddings, policy=DuplicatePolicy.SKIP)
