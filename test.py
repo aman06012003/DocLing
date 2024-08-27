@@ -178,9 +178,21 @@ def build_pipeline_and_query(documents, query, chunk_size=500):
     document_store.write_documents(documents_with_embeddings, policy=DuplicatePolicy.SKIP)
 
     # Define the template for the prompt
+    # template = """
+    # You are a highly accurate and reliable information retriever. Your task is to carefully analyze the provided context and answer the question with the highest level of accuracy. When giving answer try to take a step back and check from the ocntext whther the answer is correct or not.
+    # ALSO PROVIDE COMPLETE ANSWER IN THE LANGUAGE THE QUESTION IS ASKED. TRY TO LOOK FOR KEYWORDS MATCHING THE QUESTION IN THE CONTEXT AND ANSWER BY CHECKING IT THROUGHLY.
+
+    # Context:
+    # {% for document in documents %}
+    #     {{ document.content }}
+    # {% endfor %}
+
+    # Question: {{ query }}?
+
+    # Answer based on the above context from doc_id(s): {% for document in documents %}{{ document.meta['doc_id'] }} {% endfor %}
+    # """
     template = """
-    You are a highly accurate and reliable information retriever. Your task is to carefully analyze the provided context and answer the question with the highest level of accuracy. When giving answer try to take a step back and check from the ocntext whther the answer is correct or not.
-    ALSO PROVIDE COMPLETE ANSWER IN THE LANGUAGE THE QUESTION IS ASKED. TRY TO LOOK FOR KEYWORDS MATCHING THE QUESTION IN THE CONTEXT AND ANSWER BY CHECKING IT THROUGHLY.
+    Act as if you are a college professor helping people to better understand the contents of a document. Your task is to analyze the provided context and answer each question. Before answering the question, take a step and ensure that to carefully analyze the context and answer the question fully. The answer should always be in the language that the question was provided.
 
     Context:
     {% for document in documents %}
@@ -189,7 +201,8 @@ def build_pipeline_and_query(documents, query, chunk_size=500):
 
     Question: {{ query }}?
 
-    Answer based on the above context from doc_id(s): {% for document in documents %}{{ document.meta['doc_id'] }} {% endfor %}
+    Answer: 
+
     """
 
     # Initialize the query pipeline
