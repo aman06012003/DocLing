@@ -236,4 +236,4 @@ if uploaded_file is not None:
         
         # Display the result
         st.subheader("Answer:")
-        st.write(result['llm'])
+        st.write(result['llm'][0])
