@@ -264,5 +264,5 @@ if uploaded_file is not None:
         # Display the result
         st.subheader("Answer:")
         st.write(answer)
-        st.subheader("Summary:")
-        st.write(summarized_answer)
+        # st.subheader("Summary:")
+        # st.write(summarized_answer)
