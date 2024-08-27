@@ -189,6 +189,7 @@ def build_pipeline_and_query(documents, query, chunk_size=500):
     Question: {{ query }}?
 
     Answer based on the above context from doc_id(s): {% for document in documents %}{{ document.meta['doc_id'] }} {% endfor %}
+    Also answer in the language the question is asked
     """
 
     # Initialize the query pipeline
