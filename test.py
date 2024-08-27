@@ -180,7 +180,7 @@ def build_pipeline_and_query(documents, query, chunk_size=500):
     # Define the template for the prompt
     template = """
     You are a highly accurate and reliable information retriever. Your task is to carefully analyze the provided context and answer the question with the highest level of accuracy. When giving answer try to take a step back and check from the ocntext whther the answer is correct or not.
-    ALSO PROVIDE COMPLETE ANSWER IN THE LANGUAGE THE QUESTION IS ASKED. TRY TO LOOK FOR KEYWORDS MATCHING THE QUESTION IN THE CONTEXT
+    ALSO PROVIDE COMPLETE ANSWER IN THE LANGUAGE THE QUESTION IS ASKED. TRY TO LOOK FOR KEYWORDS MATCHING THE QUESTION IN THE CONTEXT AND ANSWER BY CHECKING IT THROUGHLY.
 
     Context:
     {% for document in documents %}
