@@ -236,7 +236,7 @@ def build_pipeline_and_query(documents, query, chunk_size=500):
     return answer, summarized_answer
 
 # Streamlit app setup
-st.title("Multilingual PDF Question Answering App")
+st.title("Doclingual")
 
 # File upload
 uploaded_file = st.file_uploader("Upload a PDF document", type=["pdf"])
