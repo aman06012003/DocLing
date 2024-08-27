@@ -170,7 +170,7 @@ def prepare_documents_from_pdf(text, doc_id, chunk_size=500):
 def build_pipeline_and_query(documents, query, chunk_size=500):
     """Build the pipeline, process the PDF, and answer the query."""
     # Initialize the document store
-    document_store = InMemoryDocumentStor()
+    document_store = InMemoryDocumentStore()
 
     # Embed and store documents with embeddings
     document_embedder = CohereDocumentEmbedder(model="embed-multilingual-v2.0")
