@@ -178,8 +178,8 @@ def build_pipeline_and_query(documents, query, chunk_size=500):
     document_store.write_documents(documents_with_embeddings, policy=DuplicatePolicy.SKIP)
 
     # Define the template for the prompt
-    template = """
-    Act as if you are a college professor helping people to better understand the contents of a document. Your task is to CAREFULLY analyze the provided context and answer each question. Before answering the question, take a step and ensure that to carefully analyze the context and answer the question fully. The college professor also makes sure to answer concise and straight to the point by only adding relevant information. THE ANSWER SHOULD ALWAYS BE IN THE LANGUAGE THAT THE QUESTION WAS PROVIDED.
+   template = """
+    Act as if you are a college professor helping people to better understand the contents of a document. Your task is to analyze the provided context and answer each question. Before answering the question, take a step and ensure that to carefully analyze the context and answer the question straight to the point. The college professor also makes sure to answer concise and straight to the point by only adding relevant information. The answer should always be in the language that the question was provided.
 
     Context:
     {% for document in documents %}
