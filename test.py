@@ -138,7 +138,7 @@ from haystack_integrations.components.embedders.cohere.document_embedder import 
 from haystack.components.retrievers.in_memory import InMemoryEmbeddingRetriever
 from haystack.components.builders.prompt_builder import PromptBuilder
 from haystack_integrations.components.generators.cohere import CohereGenerator
-from haystack.pipelines import Pipeline
+from haystack import Pipeline
 from haystack.utils import DuplicatePolicy
 os.environ["COHERE_API_KEY"] = "XyBudfarv1bxPBBJRDK6BpX00NujnPz3RTRFXioy"
 def extract_text_from_pdf(pdf_path):
