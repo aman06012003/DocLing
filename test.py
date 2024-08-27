@@ -259,7 +259,7 @@ if uploaded_file is not None:
 
     if query:
     # Build the pipeline and get the answer and summary
-    answer, summarized_answer = build_pipeline_and_query(documents, query)
+        answer, summarized_answer = build_pipeline_and_query(documents, query)
         
         # Display the result
         st.subheader("Answer:")
