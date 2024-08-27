@@ -132,7 +132,7 @@ import os
 import streamlit as st
 import pdfplumber  # For PDF processing
 from haystack import Document
-from haystack.document_stores.in_memory import InMemoryDocumentStor
+from haystack.document_stores.in_memory import InMemoryDocumentStore
 from haystack.nodes import CohereDocumentEmbedder, CohereTextEmbedder, PromptBuilder, CohereGenerator, InMemoryEmbeddingRetriever
 from haystack.pipelines import Pipeline
 from haystack.utils import DuplicatePolicy
