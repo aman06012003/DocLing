@@ -11,22 +11,22 @@
 # from haystack.components.builders.prompt_builder import PromptBuilder
 # from haystack_integrations.components.generators.cohere import CohereGenerator
 # import os
-# from io import StringIO
+from io import StringIO
 
-# def change_bgm():
-#     st.markdown(
-#         f"""
-#         <style>
-#         .stApp {{
-#             background-image: url("https://t4.ftcdn.net/jpg/01/17/22/31/360_F_117223193_GVPlYQZIF3BSwsUOHakbIsOM9Z5FJfFQ.jpg");
-#             background-size: cover;
-#         }}
-#         </style>
-#         """,
-#         unsafe_allow_html=True
-#     )
+def change_bgm():
+    st.markdown(
+        f"""
+        <style>
+        .stApp {{
+            background-image: url("https://t4.ftcdn.net/jpg/01/17/22/31/360_F_117223193_GVPlYQZIF3BSwsUOHakbIsOM9Z5FJfFQ.jpg");
+            background-size: cover;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
 
-# change_bgm()
+change_bgm()
 
 # # Initialize the Cohere API key
 # os.environ["COHERE_API_KEY"] = st.secrets["COHERE_API_KEY"]
