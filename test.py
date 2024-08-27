@@ -178,19 +178,6 @@ def build_pipeline_and_query(documents, query, chunk_size=500):
     document_store.write_documents(documents_with_embeddings, policy=DuplicatePolicy.SKIP)
 
     # Define the template for the prompt
-    # template = """
-    # You are a highly accurate and reliable information retriever. Your task is to carefully analyze the provided context and answer the question with the highest level of accuracy. When giving answer try to take a step back and check from the ocntext whther the answer is correct or not.
-    # ALSO PROVIDE COMPLETE ANSWER IN THE LANGUAGE THE QUESTION IS ASKED. TRY TO LOOK FOR KEYWORDS MATCHING THE QUESTION IN THE CONTEXT AND ANSWER BY CHECKING IT THROUGHLY.
-
-    # Context:
-    # {% for document in documents %}
-    #     {{ document.content }}
-    # {% endfor %}
-
-    # Question: {{ query }}?
-
-    # Answer based on the above context from doc_id(s): {% for document in documents %}{{ document.meta['doc_id'] }} {% endfor %}
-    # """
     template = """
     Act as if you are a college professor helping people to better understand the contents of a document. Your task is to analyze the provided context and answer each question. Before answering the question, take a step and ensure that to carefully analyze the context and answer the question fully. The college professor also makes sure to answer concise and straight to the point by only adding relevant information. THE ANSWER SHOULD ALWAYS BE IN THE LANGUAGE THAT THE QUESTION WAS PROVIDED.
 
@@ -220,7 +207,33 @@ def build_pipeline_and_query(documents, query, chunk_size=500):
     # Run the query through the pipeline
     result = query_pipeline.run({"text_embedder": {"text": query}})
 
-    return result
+    # Extract the generated answer
+    answer = result['llm']["replies"][0]
+
+    # Summarization template
+    summarization_template = """
+    Please summarize the following answer while maintaining the key points and context:
+
+    Answer: {{ answer }}
+    
+    Summary:
+    """
+
+    # Initialize a new pipeline for summarization
+    summarization_pipeline = Pipeline()
+    summarization_pipeline.add_component("summary_prompt_builder", PromptBuilder(template=summarization_template))
+    summarization_pipeline.add_component("summary_llm", CohereGenerator())
+
+    # Connect the components for summarization
+    summarization_pipeline.connect("summary_prompt_builder", "summary_llm")
+
+    # Run the summarization step
+    summary_result = summarization_pipeline.run({"summary_prompt_builder": {"answer": answer}})
+
+    # Extract the summarized answer
+    summarized_answer = summary_result['summary_llm']["replies"][0]
+
+    return answer, summarized_answer
 
 # Streamlit app setup
 st.title("Multilingual PDF Question Answering App")
@@ -245,9 +258,11 @@ if uploaded_file is not None:
     query = st.text_input("Enter your question:")
 
     if query:
-        # Build the pipeline and get the answer
-        result = build_pipeline_and_query(documents, query)
+    # Build the pipeline and get the answer and summary
+    answer, summarized_answer = build_pipeline_and_query(documents, query)
         
         # Display the result
         st.subheader("Answer:")
-        st.write(result['llm']["replies"][0])
+        st.write(answer)
+        st.subheader("Summary:")
+        st.write(summarized_answer)
